@@ -24,7 +24,7 @@ make start
 ```
 
 
-# Dependency:
+## Dependency:
 
 - Python 3+
 - numpy
