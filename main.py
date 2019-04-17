@@ -86,19 +86,11 @@ def to_accuracy_by_samples(data, labels, experiments):
 
   return calcAccuracy
 
-def partition_by_label(labels):
-  one, zero = [], []
-  for idx, val in enumerate(labels):
-    one.append(idx) if val == 1 else zero.append(idx)
-  return one, zero
-
 """
 Render the line chart. `matplotlib` conflicts with pipenv 😞. Check:
 https://matplotlib.org/faq/osx_framework.html
 """
 def plot_accuracy_line(accuracies, training_sample_size):
-  print("Accuracy:", accuracies)
-
   # Take n from group 0 and 1, so multiply by 2
   training_sample_size = list(map(lambda x : x * 2, training_sample_size))
 
@@ -121,6 +113,8 @@ if __name__ == '__main__':
     # Get mapped accuracy
     toAccuracy = to_accuracy_by_samples(data, labels, experiments)
     accuracies = list(map(toAccuracy, training_sample_size))
+
+    print("Accuracy:", accuracies)
 
     # Plot the accuracy with nice line chart
     plot_accuracy_line(accuracies, training_sample_size)
