@@ -99,11 +99,14 @@ https://matplotlib.org/faq/osx_framework.html
 def plot_accuracy_line(accuracies, training_sample_size):
   print("Accuracy:", accuracies)
 
+  # Take n from group 0 and 1, so multiply by 2
+  training_sample_size = list(map(lambda x : x * 2, training_sample_size))
+
   plt.plot(training_sample_size, list(map(lambda x : x * 100, accuracies)), 'r-o')
   # Zoom in
-  # plt.axis([0, max(training_sample_size), 70, 80])
-  plt.axis([0, max(training_sample_size), 0, 100])
-  plt.xlabel('Training Sample Size')
+  plt.axis([0, max(training_sample_size), 70, 80])
+  # plt.axis([0, max(training_sample_size), 0, 100])
+  plt.xlabel('Training Sample Size (2n)')
   plt.ylabel('Accuracy (%)')
   plt.show()
 
